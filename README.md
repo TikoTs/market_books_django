@@ -1,4 +1,4 @@
-In this a django project, where you can create a superuser, create new books and make some actions on them. 
+This a django project, where you can create a superuser, create new books and make some actions on them. 
 I used bootstrap for designing some pages. 
 Before using the project, you have to run the commands in terminal:
 python manage.py migrate;
