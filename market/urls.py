@@ -23,7 +23,7 @@ from store import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("store", views.get_books, name="store_home"),
+    path("store", views.book_list, name="store_home"),
     path("store/<int:book_id>-book-details", views.get_book, name="book_details"),
 ]
 

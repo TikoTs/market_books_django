@@ -16,35 +16,49 @@
     <h2>Our Books</h2>
 </div>
 <div class="book-container">
-    {% for book in books %}
+    {% for book in page_obj %}
         <div class="card" style="width: 18rem;">
             <img src="{{ book.image.url }}" class="card-img-top" alt="No image available">
             <div class="card-body">
                 <h5 class="card-title">{{ book.book_name }}</h5>
                 <p class="card-text">{{ book.author }}</p>
-                <a href="/store/{{book.id}}-book-details" class="btn btn-primary">See details</a>
+                <a href="/store/{{ book.id }}-book-details" class="btn btn-primary">See details</a>
             </div>
         </div>
     {% endfor %}
 </div>
 </div>
+<div style="display: flex; align-items: center; column-gap: 50px">
+    {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+</div>
+
 <style>
-    .book-container{
+    .book-container {
         display: flex;
         column-gap: 15px;
         align-items: center;
         max-width: 100vw;
         flex-wrap: wrap;
     }
-    .container{
+
+    .container {
         display: flex;
         flex-direction: column;
         padding-left: 4px !important;
         margin-left: 0 !important;
     }
-    .container h2{
+
+    .container h2 {
         align-self: center;
     }
+
     body {
         margin: 0;
         padding: 0;
