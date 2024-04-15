@@ -1,12 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from store.models import Book, Category
+from store.models import Book
 
 
 def book_list(request):
     all_books = Book.objects.all()
     paginator = Paginator(all_books, 3)
-    # getting page parameter
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     return render(request, "store_home.html", {"page_obj": page_obj})
